@@ -3,6 +3,7 @@ package com.hand.infra.interceptor;
 import com.alibaba.fastjson.JSON;
 import com.hand.domain.entity.Page;
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 // Film相关的URL拦截器实现类
 public class FilmHandlerInterceptor implements HandlerInterceptor {
-    private Logger logger=Logger.getLogger(FilmHandlerInterceptor.class);
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
     /**
      * preHandle方法是进行处理器拦截用的，顾名思义，该方法将在Controller处理之前进行调用，SpringMVC中的Interceptor拦截器是链式的，
      * 可以同时存在多个Interceptor，然后SpringMVC会根据声明的前后顺序一个接一个的执行，
@@ -33,7 +34,8 @@ public class FilmHandlerInterceptor implements HandlerInterceptor {
         p.setPage(Integer.valueOf(page));
         p.setPageSize(Integer.valueOf(pageSize));   // 将属性解析为对象
 
-        logger.info(JSON.toJSONString(p));         // 输出到日志
+        System.out.println(JSON.toJSONString("converted to page:"+p));
+        logger.info("converted to page:"+JSON.toJSONString(p));         // 输出到日志
         return true;
     }
 
