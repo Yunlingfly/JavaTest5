@@ -39,6 +39,11 @@ public class Exam1Controller {
         return personService.addPerson(p);
     }
 
+    @RequestMapping(value = "/getMaxPersonId",method = RequestMethod.GET)
+    public Integer getMaxPersonId(){
+        return personService.getMaxPersonId();
+    }
+
     @RequestMapping(value = "/updatePerson",method = RequestMethod.POST)
     public Person updatePerson(Person p){
         personService.updatePerson(p);

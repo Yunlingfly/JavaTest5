@@ -20,8 +20,7 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public Integer addPerson(Person p) {
-        iPersonMapper.insert(p);
-        return iPersonMapper.selectMaxId();
+        return iPersonMapper.insert(p);
     }
 
     @Override
@@ -37,5 +36,10 @@ public class PersonServiceImpl implements IPersonService {
     @Override
     public void deletePerson(Integer id) {
         iPersonMapper.delete(id);
+    }
+
+    @Override
+    public Integer getMaxPersonId() {
+        return iPersonMapper.selectMaxId();
     }
 }

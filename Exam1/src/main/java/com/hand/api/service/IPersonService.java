@@ -8,4 +8,5 @@ public interface IPersonService {
     Integer addPerson(Person p);
     void updatePerson(Person p);
     void deletePerson(Integer id);
+    Integer getMaxPersonId();
 }
