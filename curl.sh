@@ -8,7 +8,7 @@ echo "2 开始测试get类型的Film分页接口"
 curl -i "http://192.168.99.100:8081/listFilm?page=1&pageSize=10"
 
 echo "-------3-------"
-echo "3 开始测试put类型的Person新增接口"
+echo "3 开始测试put类型的Person新增接口，并获取返回的customer_id"
 curl -v -X PUT -d "first_name=helloname&last_name=hellopassword&email=zhongying.zhu@hand-china.com" "http://192.168.99.100:8081/addPerson"
 
 echo "-------4-------"
