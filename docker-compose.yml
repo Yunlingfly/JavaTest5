@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+  handmysql:
+    image: handmysql:test
+    container_name: handmysql
+    ports:
+      - "3406:3306"
+    command: [
+            '--character-set-server=utf8mb4',
+            '--collation-server=utf8mb4_unicode_ci'
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+  javatest:
+    image: test1jar:test
+    container_name: javatest1
+    depends_on:
+      - handmysql
+    ports:
+      - "8081:8081"
+    environment:
+      IP: "192.168.99.100"
+      PORT: "3406"
+      DRIVERCLASSNAME: "com.mysql.jdbc.Driver"
+      DBNAME: "test"
+      URL: "jdbc:mysql://192.168.99.100:3406/sakila?useSSL=false"
+      USERNAME: "root"
+      PASSWORD: "root"
